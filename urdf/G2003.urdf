@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<robot name="G2002">
+  <!-- color map -->
+  <material name="red">
+    <color rgba="1 0 0 0.5" />
+  </material>
+  <material name="black">
+    <color rgba="1 0 1 1" />
+  </material>
+  <material name="white">
+    <color rgba="1 1 1 1" />
+  </material>
+  <material name="blue">
+    <color rgba="0 0 0.8 1"/>
+  </material>
+  <material name="gray">
+    <color rgba="0.2 0.2 0.2 1" />
+  </material>
+  <!-- draw vehicle body -->
+  <link name="vehicle">
+    <!-- vehicle body -->
+    <visual>
+      <geometry>
+        <box size="4.95 1.45 0.9"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="1.42 0 0.8"/>
+      <material name="white"/>
+    </visual>
+    <visual>
+      <geometry>
+        <box size="3.55 1.45 0.7"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="1.42 0 1.6"/>
+      <material name="white"/>
+    </visual>
+    <visual>
+      <geometry>
+        <cylinder length="1.45" radius="0.7" />
+      </geometry>
+      <origin rpy="1.570796 0 0" xyz="3.195 0 1.25"/>
+      <material name="white"/>
+    </visual>
+    <visual>
+      <geometry>
+        <cylinder length="1.45" radius="0.7" />
+      </geometry>
+      <origin rpy="1.570796 0 0" xyz="-0.355 0 1.25"/>
+      <material name="white"/>
+    </visual>
+    <!-- vehicle rear left wheels -->
+    <visual>
+      <geometry>
+        <cylinder length="0.3" radius="0.28"/>
+      </geometry>
+      <origin rpy="1.570796 0 0" xyz="0 0.576 0.28"/>
+      <material name="black"/>
+    </visual>
+    <!-- vehicle rear right wheels -->
+    <visual>
+      <geometry>
+        <cylinder length="0.3" radius="0.28"/>
+      </geometry>
+      <origin rpy="1.570796 0 0" xyz="0 -0.576 0.28"/>
+      <material name="black"/>
+    </visual>
+    <!-- vehicle front left wheels -->
+    <visual>
+      <geometry>
+        <cylinder length="0.3" radius="0.28"/>
+      </geometry>
+      <origin rpy="1.570796 0 0" xyz="2.84 0.576 0.28"/>
+      <material name="black"/>
+    </visual>
+    <!-- vehicle front right wheels -->
+    <visual>
+      <geometry>
+        <cylinder length="0.3" radius="0.28"/>
+      </geometry>
+      <origin rpy="1.570796 0 0" xyz="2.84 -0.576 0.28"/>
+      <material name="black"/>
+    </visual>
+  </link>
+
+  <link name="gps">
+    <!-- GPS front antenna -->
+    <visual>
+      <geometry>
+        <cylinder length="0.03" radius="0.08"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="2.84 0 0"/>
+      <material name="white"/>
+    </visual>
+    <!-- GPS rear antenna -->
+    <visual>
+      <geometry>
+        <cylinder length="0.03" radius="0.08"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="white"/>
+    </visual>
+  </link>
+  <joint name="vehicle_to_gps" type="fixed">
+    <parent link="vehicle"/>
+    <child link="gps"/>
+    <origin rpy="0 0 0" xyz="0 0 2.0"/>
+  </joint>
+
+  <!-- draw front lidar -->
+  <link name="front_lidar">
+    <visual>
+      <geometry>
+        <cylinder length="0.1" radius="0.06"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="blue"/>
+    </visual>
+  </link>
+  <joint name="vehicle_to_front_lidar" type="fixed">
+    <parent link="vehicle"/>
+    <child link="front_lidar"/>
+    <origin rpy="0.03 0.418879 0" xyz="3.285 0 1.95"/> <!-- pitch=25, yaw=0, roll=3 -->
+  </joint>
+
+  <!-- draw rear lidar -->
+  <link name="rear_lidar">
+    <visual>
+      <geometry>
+        <cylinder length="0.1" radius="0.06"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="blue"/>
+    </visual>
+  </link>
+  <joint name="vehicle_to_rear_lidar" type="fixed">
+    <parent link="vehicle"/>
+    <child link="rear_lidar"/>
+    <origin rpy="0 0.4 3.14159265" xyz="-0.655 0 1.95"/> <!-- pitch=23, yaw=180, roll=0 -->
+  </joint>
+</robot>

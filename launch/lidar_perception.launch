@@ -1,0 +1,7 @@
+<launch>
+    <param name="/use_sim_time" value="true" />
+
+    <node pkg="lidar_perception" type="lidar_perception_node" name="lidar_perception_node1" output="screen">
+        <rosparam file="$(find lidar_perception)/params/lidar_perception.yaml" command="load"/>
+    </node>
+</launch>

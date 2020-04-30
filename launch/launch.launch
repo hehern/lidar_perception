@@ -1,0 +1,5 @@
+<launch>
+    <include file="$(find lidar_perception)/launch/lidar_perception.launch" />
+    <include file="$(find lidar_perception)/launch/tf_offline.launch" />
+    <!-- <include file="$(find lidar_perception)/launch/tf_static.launch" /> -->
+</launch>

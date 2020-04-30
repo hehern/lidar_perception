@@ -1,0 +1,6 @@
+
+<launch>
+
+<node pkg="tf" type="static_transform_publisher" name="lidar2car"  args="3.285 0.0 1.9 0.1 0.51 0.005 /base_link /velodyne 100" />
+
+</launch>

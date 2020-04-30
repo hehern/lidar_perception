@@ -1,0 +1,40 @@
+<!--xml-->
+<!--ky vehicle urdf file with 3 robosense lidar-->
+
+<robot name="test">
+
+  <material name="lidar_16">
+    <color rgba="0.5 0.9 0.5 1" />
+  </material>
+
+
+  <link name="base_link">
+      <visual>
+      <geometry>
+        <mesh filename="package://ky_localization/urdf/G200/G200.dae"/>
+      </geometry>
+      <origin rpy="0 0.0 0" xyz="-0.9 0 0.41"/>
+    </visual>
+  </link>
+
+  <link name="velodyne">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" />
+      <geometry>
+        <cylinder length="0.05" radius="0.05" />
+      </geometry>
+      <material name="lidar_16" />
+    </visual>
+  </link>
+
+
+
+<!--front-->
+  <joint name="rslidar_front_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="velodyne" />
+    <origin xyz="3.285 0.0 1.9" rpy="0.005 0.51 0.1" />
+  </joint>
+
+</robot>
+
